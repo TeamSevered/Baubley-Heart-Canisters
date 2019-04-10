@@ -1,20 +1,21 @@
 package sora.bhc.handler;
 
 import com.google.gson.JsonElement;
-import sora.bhc.BaubleyHeartCanisters;
-import sora.bhc.Reference;
-import sora.bhc.init.ModItems;
-import sora.bhc.proxy.CommonProxy;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import sora.bhc.BaubleyHeartCanisters;
+import sora.bhc.Reference;
+import sora.bhc.init.ModItems;
+import sora.bhc.proxy.CommonProxy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +28,8 @@ public class DropHandler {
     @SubscribeEvent
     public static void onEntityDrop(LivingDropsEvent event) {
         EntityLivingBase entity = event.getEntityLiving();
-        if (entity.world.isRemote) return; //no duplicate glitch on client!
-        if(!CommonProxy.TINKERS_CONSTRUCT_INSTALLED && entity instanceof EntityWitherSkeleton) {
+        if (entity.world.isRemote || entity instanceof EntityPlayer) return; //no duplicate glitch on client!
+        if (!CommonProxy.TINKERS_CONSTRUCT_INSTALLED && entity instanceof EntityWitherSkeleton) {
             if (entity.world.rand.nextDouble() < ConfigHandler.boneDropRate) {
                 entity.dropItem(ModItems.WITHER_BONE, 1);
             }
@@ -40,7 +41,6 @@ public class DropHandler {
 
 
     public static List<ItemStack> getEntityDrops(EntityLivingBase entity) {
-
         List<ItemStack> list = new ArrayList<>();
         for (Map.Entry<String, JsonElement> entry : BaubleyHeartCanisters.jsonHandler.getObject().entrySet()) {
             ItemStack stack = ItemStack.EMPTY;
@@ -86,7 +86,6 @@ public class DropHandler {
     }
 
     public static void addWithPercent(List<ItemStack> list, ItemStack stack, double percentage) {
-
         Random random = new Random();
         int percent = (int) (percentage * 100);
         if (random.nextInt(100) <= percent) {

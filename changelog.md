@@ -1,3 +1,7 @@
+Version 2.0.2
+--------------------------------------------------
+- Fixed NPE w/ Entity Entry (Player Check)
+--------------------------------------------------
 Version 2.0.1
 --------------------------------------------------
 - I goofed (I broke Client and Common Proxy with Refactor of Package Fixed Now)
