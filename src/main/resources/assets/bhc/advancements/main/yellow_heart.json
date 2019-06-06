@@ -1,13 +1,13 @@
 {
   "display": {
     "icon":{
-      "item":"bhc:orange_heart"
+      "item":"bhc:yellow_heart"
     },
     "title":{
-      "translate":"advancements.bhc.orange_heart"
+      "translate":"advancements.bhc.yellow_heart"
     },
     "description":{
-      "translate": "advancements.bhc.orange_heart.description"
+      "translate": "advancements.bhc.yellow_heart.description"
     }
   },
   "parent": "bhc:main/root",
@@ -17,7 +17,7 @@
       "conditions":{
         "items":[
           {
-            "item": "bhc:orange_heart"
+            "item": "bhc:yellow_heart"
           }
         ]
 

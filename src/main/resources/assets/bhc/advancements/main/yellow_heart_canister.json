@@ -1,23 +1,23 @@
 {
   "display": {
     "icon":{
-      "item":"bhc:orange_heart_canister"
+      "item":"bhc:yellow_heart_canister"
     },
     "title":{
-      "translate":"advancements.bhc.orange_heart_canister"
+      "translate":"advancements.bhc.yellow_heart_canister"
     },
     "description":{
-      "translate": "advancements.bhc.orange_heart_canister.description"
+      "translate": "advancements.bhc.yellow_heart_canister.description"
     }
   },
-  "parent": "bhc:main/orange_heart",
+  "parent": "bhc:main/yellow_heart",
   "criteria":{
     "orange_heart_canister_in_inventory":{
       "trigger": "minecraft:inventory_changed",
       "conditions":{
         "items":[
           {
-            "item": "bhc:orange_heart_canister"
+            "item": "bhc:yellow_heart_canister"
           }
         ]
 
